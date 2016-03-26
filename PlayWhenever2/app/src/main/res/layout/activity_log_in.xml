@@ -4,11 +4,11 @@
               xmlns:ripple="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical">
 
-    <include
+    <!-- <include
         android:id="@+id/toolbar_actionbar"
         layout="@layout/toolbar_default"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"/> -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,32 +82,8 @@
                 android:id="@+id/sign_up"/>
 
         </LinearLayout>
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp" />
-        <com.facebook.login.widget.ProfilePictureView
-            android:id="@+id/picture"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_width="200sp"
-            android:layout_height="200sp"/>
-        <Button
-            android:id="@+id/details"
-            android:text="Show details"
-            android:layout_gravity="center"
-            android:layout_width="200sp"
-            android:layout_marginBottom="20dp"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/share"
-            android:text="Share"
-            android:layout_gravity="center"
-            android:layout_width="200sp"
-            android:layout_height="wrap_content" />
+
+
 
     </LinearLayout>
 

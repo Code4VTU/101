@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".newAccount"
+    tools:showIn="@layout/activity_new"
+    android:orientation="vertical">
+
+
+    <TextView android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/email"
+              android:paddingLeft="10dip"
+              android:paddingRight="10dip"
+              android:paddingTop="10dip"
+              android:textSize="17sp"
+              android:textColor="@android:color/black"/>
+
+    <!-- Input Name -->
+    <EditText android:id="@+id/inputName"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="5dip"
+              android:layout_marginBottom="15dip"
+              android:singleLine="true"
+              android:textColor="@android:color/black"
+              android:inputType="textEmailAddress"
+              android:hint="@string/type_your_email"
+              android:textColorHint="@android:color/darker_gray"
+              android:maxLength="255"
+        />
+
+    <!-- Price Label -->
+    <TextView android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/password"
+              android:paddingLeft="10dip"
+              android:paddingRight="10dip"
+              android:paddingTop="10dip"
+              android:textSize="17sp"
+              android:textColor="@android:color/black"
+        />
+
+    <!-- Input Price -->
+    <EditText android:id="@+id/inputPrice"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="5dip"
+              android:layout_marginBottom="15dip"
+              android:singleLine="true"
+              android:textColor="@android:color/black"
+              android:inputType="textPassword"
+              android:hint="@string/type_pass"
+              android:textColorHint="@android:color/darker_gray"
+              android:maxLength="128"
+        />
+    <!-- android:inputType="numberDecimal"/> -->
+
+    <!-- Description Label -->
+    <TextView android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/user_name"
+              android:paddingLeft="10dip"
+              android:paddingRight="10dip"
+              android:paddingTop="10dip"
+              android:textSize="17sp"
+              android:textColor="@android:color/black"/>
+
+    <!-- Input description -->
+    <EditText android:id="@+id/inputDesc"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="5dip"
+              android:layout_marginBottom="15dip"
+              android:lines="4"
+              android:gravity="top"
+              android:textColor="@android:color/black"
+              android:inputType="textPersonName"
+              android:hint="@string/type_name"
+              android:textColorHint="@android:color/darker_gray"
+              android:maxLength="128"
+
+        />
+
+    <!-- Button Create Product -->
+    <Button android:id="@+id/btnCreateProduct"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_user"/>
+
+</LinearLayout>

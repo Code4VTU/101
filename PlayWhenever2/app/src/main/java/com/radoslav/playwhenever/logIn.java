@@ -22,13 +22,14 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Log_in extends AppCompatActivity {
+public class logIn extends AppCompatActivity {
 
 
 
     private ProgressDialog pDialog;
 
 
+    private Boolean toLogIn = false;
 
     EditText textEmail;
     EditText textPassword;
@@ -36,13 +37,32 @@ public class Log_in extends AppCompatActivity {
     Button btnReset;
     Button btnSignUp;
 
+    private userDetails userDetails = new userDetails();
+
+
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_PRODUCT = "user";
+    private static final String TAG_ID = "id";
+    private static final String TAG_EMAIL = "email";
+    private static final String TAG_NAME = "name";
+    private static final String TAG_PASS = "password";
+    private static final String TAG_SALT = "salt";
+
+    JSONParser jsonParser = new JSONParser();
+    private static final String url_product_details = "http://radoslavbonev.net/playWhenever/get_user_details.php";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
 
-
+if(userDetails.userLoggedIn)
+{
+    Intent intent = new Intent(this, playgrounds.class);
+    startActivity(intent);
+}
       /*  mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);*/
@@ -72,7 +92,7 @@ public class Log_in extends AppCompatActivity {
 
                         if (passwordNotTooLong()) {
 
-                            new GetProductDetails().execute();
+                            new getUserDetails().execute();
                         } else {
                             textPassword.setError(getString(R.string.password_too_long));
                         }
@@ -118,6 +138,11 @@ public class Log_in extends AppCompatActivity {
 
 
 
+
+
+
+
+
     }
 
     private boolean emailNotTooLong()
@@ -148,7 +173,7 @@ public class Log_in extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Log_in.this);
+            pDialog = new ProgressDialog(logIn.this);
             pDialog.setMessage(getString(R.string.attepmpt_to_log_in));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -193,14 +218,14 @@ public class Log_in extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                             String enteredPasswor = hash.getHashedValue();
-                            if (enteredPasswor.equals(product.getString(TAG_PRICE))) {
+                            if (enteredPasswor.equals(product.getString(TAG_PASS))) {
 
                                 Toast.makeText(getApplicationContext(), R.string.you_are_logged_in, Toast.LENGTH_LONG).show();
 
                                 toLogIn = true;
-                                userDetails.setLoggedUserID(Integer.parseInt(product.getString(TAG_ID)));
+                                userDetails.loggedUserID = Integer.parseInt(product.getString(TAG_ID));
 
-                                name = product.getString("name");
+                                userDetails.loggedUserName = product.getString("name");
 
                             } else {
                                 textPassword.setError(getString(R.string.wrong_pass));
@@ -209,7 +234,7 @@ public class Log_in extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), R.string.wrong_pass, Toast.LENGTH_LONG).show();
                             }
 
-                            System.out.println("pass: " + product.getString(TAG_PRICE));
+                            System.out.println("pass: " + product.getString(TAG_PASS));
 
 
                         } else {
@@ -235,12 +260,6 @@ public class Log_in extends AppCompatActivity {
 
             if(toLogIn)
             {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        new LoadGroups().execute();
-                    }
-                });
-
                 toLogIn = false;
             }
 
